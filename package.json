@@ -1,0 +1,76 @@
+{
+  "scripts": {
+    "build": "rimraf built && tsc",
+    "watch": "tsc --watch",
+    "lint": "tslint -p ./tsconfig.json",
+    "test": "jest",
+    "prettier": "prettier --config ./.prettierrc --write \"{src,test,bin,lib,config}/**/*.{ts,json,md}\""
+  },
+  "devDependencies": {
+    "@types/graphql": "^14.0.7",
+    "@types/jest": "^24.0.11",
+    "husky": "^1.3.1",
+    "jest": "^24.4.0",
+    "lint-staged": "^8.1.5",
+    "prettier": "1.16.4",
+    "rimraf": "^2.6.3",
+    "ts-jest": "^24.0.0",
+    "tslint": "^5.13.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.3.3333"
+  },
+  "dependencies": {
+    "graphql": "^14.1.1",
+    "graphql-tools": "^4.0.4"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/api/"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.json"
+      }
+    },
+    "testMatch": [
+      "**/__tests__/**/*.ts"
+    ]
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write",
+      "tslint --fix",
+      "git add"
+    ],
+    "*.{json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "name": "zeit-gql",
+  "description": "A GraphQL wrapper around Zeit's documented REST APIs",
+  "version": "0.0.1",
+  "main": "./built/index.js",
+  "keywords": [
+    "zeit",
+    "graphql"
+  ],
+  "author": "Mudit Ameta",
+  "license": "MIT"
+}

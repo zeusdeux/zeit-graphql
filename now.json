@@ -1,0 +1,7 @@
+{
+  "name": "zeit-gql",
+  "version": 2,
+  "public": false,
+  "builds": [{ "src": "api/index.ts", "use": "@now/node" }],
+  "routes": [{ "src": "/graphql", "dest": "/api/index.ts" }, { "src": "/.*", "status": 404 }]
+}

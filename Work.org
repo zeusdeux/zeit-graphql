@@ -1,0 +1,45 @@
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+#+STARTUP: overview
+#+Title: Zeit APIs over GraphQL
+
+* GETs [0/19]
+** INPROGRESS [[https://zeit.co/docs/api/#endpoints/deployments/list-deployments][List Deployments]]
+   - State "INPROGRESS" from "TODO"       [2019-03-12 Tue 15:30]
+   ~GET /v3/now/deployments~
+** TODO [[https://zeit.co/docs/api/#endpoints/deployments/get-a-single-deployment][Get a Single Deployment]]
+   ~GET /v6/now/deployments/:id~
+** TODO [[https://zeit.co/docs/api/#endpoints/deployments/list-deployment-files][List Deployment Files]]
+   ~GET /v5/now/deployments/:id/files~
+** TODO [[https://zeit.co/docs/api/#endpoints/deployments/get-single-file-contents][Get Single File Contents]]
+   ~GET /v5/now/deployments/:id/files/:fileId~
+** TODO [[https://zeit.co/docs/api/#endpoints/deployments/list-builds][List Builds]]
+   ~GET /v5/now/deployments/:id/builds~
+** TODO [[https://zeit.co/docs/api/#endpoints/logs/get-deployment-logs][Get Deployment Logs]]
+   ~GET /v2/now/deployments/:id/events~
+** TODO [[https://zeit.co/docs/api/#endpoints/domains/list-all-the-domains][List all the Domains]]
+   ~GET /v4/domains~
+** TODO [[https://zeit.co/docs/api/#endpoints/domains/check-a-domain-availability][Check a Domain availability]]
+   ~GET /v4/domains/status?name~
+** TODO [[https://zeit.co/docs/api/#endpoints/domains/check-the-price-of-a-domain][Check the price of a domain]]
+   ~GET /v4/domains/price?name~
+** TODO [[https://zeit.co/docs/api/#endpoints/dns/list-all-the-dns-records-of-a-domain][List all the DNS records of a domain]]
+   ~GET /v2/domains/:domain/records~
+** TODO [[https://zeit.co/docs/api/#endpoints/certificates/list-all-the-certificates][List all the certificates]]
+   ~GET /v3/now/certs~
+** TODO [[https://zeit.co/docs/api/#endpoints/certificates/get-a-single-certificate][Get a single certificate]]
+   ~GET /v3/now/certs/:id~
+** TODO [[https://zeit.co/docs/api/#endpoints/aliases/list-all-the-aliases][List all the aliases]]
+   ~GET /v2/now/aliases~
+** TODO [[https://zeit.co/docs/api/#endpoints/aliases/list-aliases-by-deployment][List aliases by deployment]]
+   ~GET /v2/now/deployments/:id/aliases~
+** TODO [[https://zeit.co/docs/api/#endpoints/secrets/list-all-the-secrets][List all the secrets]]
+   ~GET /v2/now/secrets~
+** TODO [[https://zeit.co/docs/api/#endpoints/teams/list-all-your-teams][List all your teams]]
+   ~GET /v1/teams~
+** TODO [[https://zeit.co/docs/api/#endpoints/teams/get-single-team-information][Get single team information]]
+   ~GET /v1/teams/:id~
+   ~GET /v1/teams?slug~
+** TODO [[https://zeit.co/docs/api/#endpoints/teams/get-list-of-team-members][Get list of team members]]
+   ~GET /v1/teams/:id/members~
+** TODO [[https://zeit.co/docs/api/#endpoints/authentication/verify-loginv][Verify login]]
+   ~GET /now/registration/verify?email&token~
