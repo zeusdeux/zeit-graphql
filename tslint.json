@@ -2,5 +2,9 @@
   "defaultSeverity": "error",
   "extends": ["tslint:recommended", "tslint-config-prettier"],
   "jsRules": {},
-  "rules": {}
+  "rules": {
+    "curly": true,
+    "variable-name": false,
+    "object-literal-sort-keys": false
+  }
 }

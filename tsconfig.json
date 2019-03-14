@@ -8,6 +8,7 @@
     "resolveJsonModule": true,
     "project": "./",
     "outDir": "./built",
+    "esModuleInterop": true,
 
     "strict": true,
     "noEmitOnError": true,
