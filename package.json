@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "rimraf built && tsc",
+    "build": "npm run lint && rimraf built && tsc",
     "watch": "tsc --watch",
     "lint": "tslint -p ./tsconfig.json",
     "test": "jest",
