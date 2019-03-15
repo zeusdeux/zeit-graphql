@@ -42,6 +42,7 @@ export const typeDefs = gql`
 
 export const resolvers = {
   Query: {
+    // TODO: Add types to all the any types here
     deployments: (_obj: any, { teamId }: any, { dataSources }: any) => {
       return dataSources.zeitAPI.getDeployments(teamId)
     }

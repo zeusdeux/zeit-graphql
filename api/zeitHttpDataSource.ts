@@ -10,7 +10,7 @@ export class ZeitAPI extends RESTDataSource {
     const endpoint = '/v3/now/deployments'
 
     if (teamId) {
-      return this.get(`${endpoint}?teamId=${teamId}`)
+      return this.get(`${endpoint}?teamId=${teamId}`).then(v => v.deployments)
     }
 
     return this.get(endpoint).then(v => v.deployments)
