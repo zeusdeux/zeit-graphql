@@ -7,13 +7,10 @@ export class ZeitAPI extends RESTDataSource {
   }
 
   public async getDeployments(teamId?: string) {
-    const endpoint = '/v3/now/deployments'
+    const endpoint = `/v3/now/deployments${teamId ? '?teamId=' + teamId : ''}`
 
-    if (teamId) {
-      return this.get(`${endpoint}?teamId=${teamId}`).then(v => v.deployments)
-    }
-
-    return this.get(endpoint).then(v => v.deployments)
+    const { deployments } = await this.get(endpoint)
+    return deployments
   }
 
   protected willSendRequest(request: RequestOptions) {
