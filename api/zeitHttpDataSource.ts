@@ -13,6 +13,12 @@ export class ZeitAPI extends RESTDataSource {
     return deployments
   }
 
+  public getDeployment(deploymentId: string) {
+    const endpoint = `/v8/now/deployments/${deploymentId}`
+
+    return this.get(endpoint)
+  }
+
   protected willSendRequest(request: RequestOptions) {
     request.headers.set('Authorization', this.context.authToken)
   }
