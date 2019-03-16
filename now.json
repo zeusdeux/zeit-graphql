@@ -1,7 +1,8 @@
 {
   "name": "zeit-gql",
+  "alias": ["zeit.zdx.cat"],
   "version": 2,
   "public": false,
-  "builds": [{ "src": "api/index.ts", "use": "@now/node" }],
+  "builds": [{ "src": "api/index.ts", "use": "@now/node-server" }],
   "routes": [{ "src": "/graphql", "dest": "/api/index.ts" }, { "src": "/.*", "status": 404 }]
 }
