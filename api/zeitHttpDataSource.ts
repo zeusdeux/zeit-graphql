@@ -19,7 +19,7 @@ export class ZeitAPI extends RESTDataSource {
     return this.get(endpoint)
   }
 
-  public async getDeploymentFiles(deploymentId: string, teamId?: string) {
+  public getDeploymentFiles(deploymentId: string, teamId?: string) {
     const endpoint = withTeamId(`/v5/now/deployments/${deploymentId}/files`, teamId)
 
     return this.get(endpoint)
