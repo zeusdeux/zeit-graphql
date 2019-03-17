@@ -18,10 +18,34 @@ const server = new ApolloServer({
   }),
   dataSources: () => ({
     zeitAPI: new ZeitAPI()
-  })
+  }),
+  formatError: error => {
+    // tslint:disable-next-line:no-console
+    console.error(error)
+
+    if (error.extensions) {
+      delete error.extensions.exception
+
+      if (error.extensions.response) {
+        const errorBody = error.extensions.response.body
+
+        delete error.extensions.response.body
+        return {
+          ...errorBody,
+          ...error.extensions.response,
+          path: error.path,
+          locations: error.locations
+        }
+      }
+    }
+
+    return error
+  }
 })
 
 server.listen().then(({ url }: { url: string }) => {
+  // tslint:disable-next-line:no-console
+  console.log(`Schema introspection ${enableIntrospectionInProd() ? 'enabled' : 'disabled'}`)
   // tslint:disable-next-line:no-console
   console.log(`Server ready at ${url}`)
 })

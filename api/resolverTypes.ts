@@ -1,11 +1,11 @@
 import { ZeitAPI } from './zeitHttpDataSource'
 
 export interface Args {
-  teamId?: string
+  readonly teamId?: string
 }
 
 export interface ZeitGqlDataSources {
-  dataSources: {
-    zeitAPI: ZeitAPI
+  readonly dataSources: {
+    readonly zeitAPI: ZeitAPI
   }
 }
