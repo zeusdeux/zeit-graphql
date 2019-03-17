@@ -2,7 +2,7 @@
 #+STARTUP: overview
 #+Title: [[https://github.com/zeusdeux/zeit-graphql][Zeit APIs over GraphQL]]
 
-* GETs [2/19]
+* GETs [3/19]
 ** DONE [[https://zeit.co/docs/api/#endpoints/deployments/list-deployments][List Deployments]]
    - State "DONE"       from "INPROGRESS" [2019-03-14 Thu 17:20]
    - State "INPROGRESS" from "TODO"       [2019-03-12 Tue 15:30]
@@ -11,7 +11,9 @@
    - State "DONE"       from "INPROGRESS" [2019-03-16 Sat 03:53]
    - State "INPROGRESS" from "TODO"       [2019-03-16 Sat 02:17]
    ~GET /v6/now/deployments/:id~
-** TODO [[https://zeit.co/docs/api/#endpoints/deployments/list-deployment-files][List Deployment Files]]
+** DONE [[https://zeit.co/docs/api/#endpoints/deployments/list-deployment-files][List Deployment Files]]
+   - State "DONE"       from "INPROGRESS" [2019-03-17 Sun 18:41]
+   - State "INPROGRESS" from "TODO"       [2019-03-17 Sun 16:57]
    ~GET /v5/now/deployments/:id/files~
 ** TODO [[https://zeit.co/docs/api/#endpoints/deployments/get-single-file-contents][Get Single File Contents]]
    ~GET /v5/now/deployments/:id/files/:fileId~

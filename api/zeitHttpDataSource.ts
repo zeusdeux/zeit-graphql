@@ -7,14 +7,20 @@ export class ZeitAPI extends RESTDataSource {
   }
 
   public async getDeployments(teamId?: string) {
-    const endpoint = `/v3/now/deployments${teamId ? '?teamId=' + teamId : ''}`
+    const endpoint = withTeamId(`/v3/now/deployments`, teamId)
 
     const { deployments } = await this.get(endpoint)
     return deployments
   }
 
   public getDeployment(deploymentId: string, teamId?: string) {
-    const endpoint = `/v8/now/deployments/${deploymentId}${teamId ? '?teamId=' + teamId : ''}`
+    const endpoint = withTeamId(`/v8/now/deployments/${deploymentId}`, teamId)
+
+    return this.get(endpoint)
+  }
+
+  public async getDeploymentFiles(deploymentId: string, teamId?: string) {
+    const endpoint = withTeamId(`/v5/now/deployments/${deploymentId}/files`, teamId)
 
     return this.get(endpoint)
   }
@@ -22,4 +28,8 @@ export class ZeitAPI extends RESTDataSource {
   protected willSendRequest(request: RequestOptions) {
     request.headers.set('Authorization', this.context.authToken)
   }
+}
+
+function withTeamId(endpoint: string, teamId?: string) {
+  return `${endpoint}${teamId ? '?teamId=' + teamId : ''}`
 }

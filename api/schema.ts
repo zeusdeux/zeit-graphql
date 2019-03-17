@@ -1,8 +1,8 @@
 import { mergeSchemas } from 'graphql-tools'
-import { DeploymentResolvers, DeploymentSchema } from './deployment'
-import { DeploymentsResolvers, DeploymentsSchema } from './deployments'
+import { DeploymentSchema } from './deployment'
+import { DeploymentsSchema } from './deployments'
+import { FilesInDeploymentSchema } from './filesInDeployment'
 
 export const schema = mergeSchemas({
-  schemas: [DeploymentsSchema, DeploymentSchema],
-  resolvers: [DeploymentsResolvers, DeploymentResolvers]
+  schemas: [DeploymentsSchema, DeploymentSchema, FilesInDeploymentSchema]
 })

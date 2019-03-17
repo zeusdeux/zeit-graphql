@@ -34,3 +34,17 @@ export const HttpMethodTypeDef = gql`
     PATCH
   }
 `
+export const FileTypeDef = gql`
+  type File {
+    uid: ID
+    name: String!
+    type: FileType!
+    mode: Int!
+    children: [File]
+  }
+
+  enum FileType {
+    file
+    directory
+  }
+`

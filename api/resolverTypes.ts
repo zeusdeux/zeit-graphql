@@ -4,7 +4,7 @@ export interface Args {
   readonly teamId?: string
 }
 
-export interface ZeitGqlDataSources {
+export interface ZeitGqlContext {
   readonly dataSources: {
     readonly zeitAPI: ZeitAPI
   }

@@ -1,6 +1,12 @@
-import { makeExecutableSchema } from 'graphql-tools'
-import { Args, ZeitGqlDataSources } from './resolverTypes'
-import { DeploymentStateTypeDef, HttpMethodTypeDef, RegionTypeDef } from './sharedTypeDefs'
+import { delegateToSchema, IGraphQLToolsResolveInfo, makeExecutableSchema } from 'graphql-tools'
+import { FilesInDeploymentSchema } from './filesInDeployment'
+import { Args, ZeitGqlContext } from './resolverTypes'
+import {
+  DeploymentStateTypeDef,
+  FileTypeDef,
+  HttpMethodTypeDef,
+  RegionTypeDef
+} from './sharedTypeDefs'
 
 const gql = String.raw
 
@@ -46,6 +52,43 @@ const LambdaTypeDef = gql`
   }
 `
 
+export interface DeploymentArgs extends Args {
+  deploymentId: string
+}
+
+const DeploymentResolver = {
+  Query: {
+    deployment(
+      _obj: any,
+      { deploymentId, teamId }: DeploymentArgs,
+      { dataSources }: ZeitGqlContext
+    ) {
+      return dataSources.zeitAPI.getDeployment(deploymentId, teamId)
+    }
+  },
+
+  Deployment: {
+    files(
+      parent: any,
+      _args: DeploymentArgs,
+      context: ZeitGqlContext,
+      info: IGraphQLToolsResolveInfo
+    ) {
+      return delegateToSchema({
+        operation: 'query',
+        fieldName: 'filesInDeployment',
+        schema: FilesInDeploymentSchema,
+        args: {
+          deploymentId: parent.id,
+          teamId: parent.ownerId
+        },
+        context,
+        info
+      })
+    }
+  }
+}
+
 export const DeploymentSchema = makeExecutableSchema({
   typeDefs: gql`
     type Query {
@@ -75,32 +118,16 @@ export const DeploymentSchema = makeExecutableSchema({
       target: TargetEnv
       aliasFinal: [String]
       lambdas: [Lambda]
+      files: [File]
     }
 
+    ${FileTypeDef}
     ${LambdaTypeDef}
     ${TargetEnvTypeDef}
     ${DeploymentStateTypeDef}
     ${BuildTypeDef}
     ${RouteTypeDef}
     ${RegionTypeDef}
-  `
+  `,
+  resolvers: DeploymentResolver
 })
-
-interface DeploymentArgs extends Args {
-  deploymentId: string
-}
-
-export const DeploymentResolvers = {
-  Query: {
-    deployment(
-      _obj: any,
-      { deploymentId, teamId }: DeploymentArgs,
-      { dataSources }: ZeitGqlDataSources
-    ) {
-      return dataSources.zeitAPI.getDeployment(deploymentId, teamId)
-    }
-  }
-  // Deployment resolver is trivial as it only
-  // picks off properties for each Deployment object
-  // and hence can be skipped here.
-}
