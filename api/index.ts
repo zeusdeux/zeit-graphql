@@ -1,12 +1,9 @@
-import { ApolloServer, gql } from 'apollo-server'
-import { resolvers, typeDefs } from './schema'
+import { ApolloServer } from 'apollo-server'
+import { schema } from './schema'
 import { ZeitAPI } from './zeitHttpDataSource'
 
 const server = new ApolloServer({
-  resolvers,
-  typeDefs: gql`
-    ${typeDefs}
-  `,
+  schema,
   context: ({ req }) => ({
     authToken: req.headers.authorization ? req.headers.authorization.trim() : ''
   }),

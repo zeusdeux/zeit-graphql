@@ -2,12 +2,13 @@
 #+STARTUP: overview
 #+Title: Zeit APIs over GraphQL
 
-* GETs [1/20]
+* GETs [3/20]
 ** DONE [[https://zeit.co/docs/api/#endpoints/deployments/list-deployments][List Deployments]]
    - State "DONE"       from "INPROGRESS" [2019-03-14 Thu 17:20]
    - State "INPROGRESS" from "TODO"       [2019-03-12 Tue 15:30]
    ~GET /v3/now/deployments~
-** INPROGRESS [[https://zeit.co/docs/api/#endpoints/deployments/get-a-single-deployment][Get a Single Deployment]]
+** DONE [[https://zeit.co/docs/api/#endpoints/deployments/get-a-single-deployment][Get a Single Deployment]]
+   - State "DONE"       from "INPROGRESS" [2019-03-16 Sat 03:53]
    - State "INPROGRESS" from "TODO"       [2019-03-16 Sat 02:17]
    ~GET /v6/now/deployments/:id~
 ** TODO [[https://zeit.co/docs/api/#endpoints/deployments/list-deployment-files][List Deployment Files]]
@@ -45,7 +46,9 @@
    ~GET /v1/teams/:id/members~
 ** TODO [[https://zeit.co/docs/api/#endpoints/authentication/verify-loginv][Verify login]]
    ~GET /now/registration/verify?email&token~
-** TODO Refactor [[file:api/schema.ts][schema.ts]]
+** DONE Refactor [[file:api/schema.ts][schema.ts]]
+   - State "DONE"       from "INPROGRESS" [2019-03-17 Sun 15:25]
+   - State "INPROGRESS" from "TODO"       [2019-03-17 Sun 14:20]
    - into files that combine typedefs and resolvers for related things
      such as deployment.ts that has everything for deployment and
      deployments

@@ -13,8 +13,8 @@ export class ZeitAPI extends RESTDataSource {
     return deployments
   }
 
-  public getDeployment(deploymentId: string) {
-    const endpoint = `/v8/now/deployments/${deploymentId}`
+  public getDeployment(deploymentId: string, teamId?: string) {
+    const endpoint = `/v8/now/deployments/${deploymentId}${teamId ? '?teamId=' + teamId : ''}`
 
     return this.get(endpoint)
   }
