@@ -86,6 +86,9 @@ const DeploymentResolver = {
       context: ZeitGqlContext,
       info: IGraphQLToolsResolveInfo
     ) {
+      // btw, the following thread explains why info.mergeInfo
+      // was undefined here.
+      // https://github.com/apollographql/apollo-server/issues/1379
       return delegateToSchema({
         operation: 'query',
         fieldName: 'filesInDeployment',
