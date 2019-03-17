@@ -2,7 +2,7 @@
 #+STARTUP: overview
 #+Title: [[https://github.com/zeusdeux/zeit-graphql][Zeit APIs over GraphQL]]
 
-* GETs [5/22]
+* GETs [2/19]
 ** DONE [[https://zeit.co/docs/api/#endpoints/deployments/list-deployments][List Deployments]]
    - State "DONE"       from "INPROGRESS" [2019-03-14 Thu 17:20]
    - State "INPROGRESS" from "TODO"       [2019-03-12 Tue 15:30]
@@ -46,15 +46,18 @@
    ~GET /v1/teams/:id/members~
 ** TODO [[https://zeit.co/docs/api/#endpoints/authentication/verify-loginv][Verify login]]
    ~GET /now/registration/verify?email&token~
+
+* Misc [3/3]
 ** DONE Refactor [[file:api/schema.ts][schema.ts]]
    - State "DONE"       from "INPROGRESS" [2019-03-17 Sun 15:25]
    - State "INPROGRESS" from "TODO"       [2019-03-17 Sun 14:20]
    - into files that combine typedefs and resolvers for related things
      such as deployment.ts that has everything for deployment and
      deployments
+
 ** DONE Enable introspection in prod based on env
    - State "DONE"       from "INPROGRESS" [2019-03-17 Sun 15:45]
    - State "INPROGRESS" from "TODO"       [2019-03-17 Sun 15:40]
-** DONE Mask errors and match Zeit api [[https://zeit.co/docs/api/#api-basics/errors][errors schema]].
+** DONE Mask errors and match Zeit api [[https://zeit.co/docs/api/#api-basics/errors][errors schema]]
    - State "DONE"       from "INPROGRESS" [2019-03-17 Sun 16:02]
    - State "INPROGRESS" from "TODO"       [2019-03-17 Sun 15:45]
