@@ -10,7 +10,7 @@
   "routes": [
     { "src": "/graphql", "methods": ["GET", "POST"], "dest": "/api/index.ts" },
     {
-      "src": "/progress",
+      "src": "/progress(#.*)?",
       "methods": ["GET"],
       "dest": "/Work.html"
     },
