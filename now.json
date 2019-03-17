@@ -3,8 +3,19 @@
   "alias": ["zeit.zdx.cat"],
   "version": 2,
   "public": false,
-  "builds": [{ "src": "api/index.ts", "use": "@now/node-server" }],
-  "routes": [{ "src": "/graphql", "dest": "/api/index.ts" }, { "src": "/.*", "status": 404 }],
+  "builds": [
+    { "src": "api/index.ts", "use": "@now/node-server" },
+    { "src": "Work.html", "use": "@now/static" }
+  ],
+  "routes": [
+    { "src": "/graphql", "methods": ["GET", "POST"], "dest": "/api/index.ts" },
+    {
+      "src": "/progress",
+      "methods": ["GET"],
+      "dest": "/Work.html"
+    },
+    { "src": "/.*", "status": 404 }
+  ],
   "github": {
     "enabled": true
   }
