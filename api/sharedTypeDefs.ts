@@ -46,5 +46,6 @@ export const FileTypeDef = gql`
   enum FileType {
     file
     directory
+    lambda
   }
 `
