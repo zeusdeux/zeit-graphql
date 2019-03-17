@@ -16,6 +16,9 @@
     },
     { "src": "/.*", "status": 404 }
   ],
+  "env": {
+    "ENABLE_INTROSPECTION": "true"
+  },
   "github": {
     "enabled": true
   }
