@@ -8,7 +8,7 @@
     { "src": "Work.html", "use": "@now/static" }
   ],
   "routes": [
-    { "src": "/graphql", "methods": ["GET", "POST"], "dest": "/api/index.ts" },
+    { "src": "/graphql", "methods": ["GET", "POST", "OPTIONS"], "dest": "/api/index.ts" },
     {
       "src": "/progress(#.*)?",
       "methods": ["GET"],
