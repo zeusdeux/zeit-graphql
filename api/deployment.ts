@@ -58,12 +58,24 @@ export interface DeploymentArgs extends Args {
 
 const DeploymentResolver = {
   Query: {
-    deployment(
+    async deployment(
       _obj: any,
       { deploymentId, teamId }: DeploymentArgs,
       { dataSources }: ZeitGqlContext
     ) {
-      return dataSources.zeitAPI.getDeployment(deploymentId, teamId)
+      const deploymentData = await dataSources.zeitAPI.getDeployment(deploymentId, teamId)
+
+      // threading teamId down to the child resolver
+      // as it's needed by the `files` resolver when it
+      // delegates to `filesInDeployment` as that requires
+      // both a deploymentId as well as an optional teamId
+      if (teamId) {
+        return {
+          ...deploymentData,
+          teamId
+        }
+      }
+      return deploymentData
     }
   },
 
@@ -80,7 +92,7 @@ const DeploymentResolver = {
         schema: FilesInDeploymentSchema,
         args: {
           deploymentId: parent.id,
-          teamId: parent.ownerId
+          teamId: parent.teamId
         },
         context,
         info
@@ -118,7 +130,7 @@ export const DeploymentSchema = makeExecutableSchema({
       target: TargetEnv
       aliasFinal: [String]
       lambdas: [Lambda]
-      files: [File]
+      files(teamId: ID): [File]
     }
 
     ${FileTypeDef}
