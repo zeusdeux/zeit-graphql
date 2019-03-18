@@ -2,7 +2,7 @@ import { ApolloServer } from 'apollo-server'
 import { schema } from './schema'
 import { ZeitAPI } from './zeitHttpDataSource'
 
-function enableIntrospectionInProd() {
+function enableIntrospectionInProd(): boolean {
   if (process.env.NODE_ENV !== 'production') {
     return true
   }

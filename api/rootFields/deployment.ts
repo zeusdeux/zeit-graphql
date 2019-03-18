@@ -1,5 +1,8 @@
-import { delegateToSchema, IGraphQLToolsResolveInfo, makeExecutableSchema } from 'graphql-tools'
-import { Args, ZeitGqlContext } from '../types/resolverTypes'
+import { GraphQLSchema } from 'graphql'
+import { delegateToSchema, makeExecutableSchema } from 'graphql-tools'
+import { DeploymentResolverType } from '../types/deployment'
+import { ZeitGqlContext } from '../types/resolverTypes'
+import { File } from '../types/sharedTypeDefs'
 import { FilesInDeploymentSchema } from './filesInDeployment'
 import {
   DeploymentStateTypeDef,
@@ -52,17 +55,9 @@ const LambdaTypeDef = gql`
   }
 `
 
-export interface DeploymentArgs extends Args {
-  deploymentId: string
-}
-
-const DeploymentResolver = {
+const DeploymentResolver: DeploymentResolverType = {
   Query: {
-    async deployment(
-      _obj: any,
-      { deploymentId, teamId }: DeploymentArgs,
-      { dataSources }: ZeitGqlContext
-    ) {
+    async deployment(_root, { deploymentId, teamId }, { dataSources }) {
       const deploymentData = await dataSources.zeitAPI.getDeployment(deploymentId, teamId)
 
       // threading teamId down to the child resolver
@@ -80,12 +75,7 @@ const DeploymentResolver = {
   },
 
   Deployment: {
-    files(
-      parent: any,
-      _args: DeploymentArgs,
-      context: ZeitGqlContext,
-      info: IGraphQLToolsResolveInfo
-    ) {
+    files(parent, _args, context, info) {
       // btw, the following thread explains why info.mergeInfo
       // was undefined here.
       // https://github.com/apollographql/apollo-server/issues/1379
@@ -99,12 +89,12 @@ const DeploymentResolver = {
         },
         context,
         info
-      })
+      }) as Promise<File[]>
     }
   }
 }
 
-export const DeploymentSchema = makeExecutableSchema({
+export const DeploymentSchema: GraphQLSchema = makeExecutableSchema<ZeitGqlContext>({
   typeDefs: gql`
     type Query {
       """
@@ -133,7 +123,7 @@ export const DeploymentSchema = makeExecutableSchema({
       target: TargetEnv
       aliasFinal: [String]
       lambdas: [Lambda]
-      files(teamId: ID): [File]
+      files: [File]
     }
 
     ${FileTypeDef}

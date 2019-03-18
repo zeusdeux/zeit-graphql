@@ -1,18 +1,20 @@
+import { GraphQLSchema } from 'graphql'
 import { makeExecutableSchema } from 'graphql-tools'
-import { Args, ZeitGqlContext } from '../types/resolverTypes'
+import { DeploymentsResolverType } from '../types/deployments'
+import { ZeitGqlContext } from '../types/resolverTypes'
 import { DeploymentStateTypeDef } from './sharedTypeDefs'
 
 const gql = String.raw
 
-const DeploymentsResolver = {
+const DeploymentsResolver: DeploymentsResolverType = {
   Query: {
-    deployments(_obj: any, { teamId }: Args, { dataSources }: ZeitGqlContext) {
+    deployments(_root, { teamId }, { dataSources }) {
       return dataSources.zeitAPI.getDeployments(teamId)
     }
   }
 }
 
-export const DeploymentsSchema = makeExecutableSchema({
+export const DeploymentsSchema: GraphQLSchema = makeExecutableSchema<ZeitGqlContext>({
   typeDefs: gql`
     type Query {
       """

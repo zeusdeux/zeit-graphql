@@ -1,11 +1,13 @@
+import { GraphQLSchema } from 'graphql'
 import { makeExecutableSchema } from 'graphql-tools'
+import { DeploymentArgs } from '../types/deployment'
+import { FilesInDeploymentResolverType } from '../types/filesInDeployment'
 import { ZeitGqlContext } from '../types/resolverTypes'
-import { DeploymentArgs } from './deployment'
 import { FileTypeDef } from './sharedTypeDefs'
 
 const gql = String.raw
 
-const FilesInDeploymentResolver = {
+const FilesInDeploymentResolver: FilesInDeploymentResolverType = {
   Query: {
     filesInDeployment(
       _obj: any,
@@ -17,7 +19,7 @@ const FilesInDeploymentResolver = {
   }
 }
 
-export const FilesInDeploymentSchema = makeExecutableSchema({
+export const FilesInDeploymentSchema: GraphQLSchema = makeExecutableSchema<ZeitGqlContext>({
   typeDefs: gql`
     type Query {
       """
