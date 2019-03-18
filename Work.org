@@ -51,7 +51,7 @@
 ** TODO [[https://zeit.co/docs/api/#endpoints/authentication/verify-loginv][Verify login]]
    ~GET /now/registration/verify?email&token~
 
-* Misc [3/3]
+* Misc [4/7]
 ** DONE Refactor [[file:api/schema.ts][schema.ts]]
    - State "DONE"       from "INPROGRESS" [2019-03-17 Sun 15:25]
    - State "INPROGRESS" from "TODO"       [2019-03-17 Sun 14:20]
@@ -65,3 +65,9 @@
 ** DONE Mask errors and match Zeit api [[https://zeit.co/docs/api/#api-basics/errors][errors schema]]
    - State "DONE"       from "INPROGRESS" [2019-03-17 Sun 16:02]
    - State "INPROGRESS" from "TODO"       [2019-03-17 Sun 15:45]
+** DONE Make everything more typesafe
+   - State "DONE"       from "INPROGRESS" [2019-03-18 Mon 17:11]
+   - State "INPROGRESS" from "TODO"       [2019-03-18 Mon 15:02]
+** TODO Fix [[file:api/types/deployment.ts::%5Bkey:%20string%5D:%20any][the index key signature in types/deployment.ts]]
+** TODO Fix [[file:api/types/deployments.ts::%5Bkey:%20string%5D:%20any][the index key signature in types/deployments.ts]]
+** TODO Fix [[file:api/types/filesInDeployment.ts::%5Bkey:%20string%5D:%20any][the index key signature in types/filesInDeployment.ts]]
