@@ -1,6 +1,7 @@
 import { RequestOptions, RESTDataSource } from 'apollo-datasource-rest'
+import { ZeitGqlContext } from './types/resolverTypes'
 
-export class ZeitAPI extends RESTDataSource {
+export class ZeitAPI extends RESTDataSource<ZeitGqlContext> {
   constructor() {
     super()
     this.baseURL = 'https://api.zeit.co/'
