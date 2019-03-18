@@ -1,4 +1,5 @@
 import { delegateToSchema, IGraphQLToolsResolveInfo, makeExecutableSchema } from 'graphql-tools'
+import { Args, ZeitGqlContext } from '../types/resolverTypes'
 import { FilesInDeploymentSchema } from './filesInDeployment'
 import {
   DeploymentStateTypeDef,
@@ -6,7 +7,6 @@ import {
   HttpMethodTypeDef,
   RegionTypeDef
 } from './sharedTypeDefs'
-import { Args, ZeitGqlContext } from './types/resolverTypes'
 
 const gql = String.raw
 
