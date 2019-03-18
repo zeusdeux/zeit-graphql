@@ -58,7 +58,7 @@
 ** TODO [[https://zeit.co/docs/api/#endpoints/authentication/verify-loginv][Verify login]]
    ~GET /now/registration/verify?email&token~
 
-* Misc [4/7]
+* Misc [4/9]
 ** DONE Refactor [[file:api/schema.ts][schema.ts]]
    - State "DONE"       from "INPROGRESS" [2019-03-17 Sun 15:25]
    - State "INPROGRESS" from "TODO"       [2019-03-17 Sun 14:20]
@@ -78,3 +78,10 @@
 ** TODO Fix [[file:api/types/deployment.ts::%5Bkey:%20string%5D:%20any][the index key signature in types/deployment.ts]]
 ** TODO Fix [[file:api/types/deployments.ts::%5Bkey:%20string%5D:%20any][the index key signature in types/deployments.ts]]
 ** TODO Fix [[file:api/types/filesInDeployment.ts::%5Bkey:%20string%5D:%20any][the index key signature in types/filesInDeployment.ts]]
+** TODO Make delpoyments filterable by deploymentId
+   To do so, use a union type SuccinctDeployment | Deployment and
+   based on whether a deploymentId is provided as an arg to
+   ~deployments~ root field, return one of those two types. More [[https://www.apollographql.com/docs/graphql-tools/resolvers.html#Unions-and-interfaces][on
+   this page]].
+** TODO Make files filterable by fileId
+   Do the same as for deployments with deploymentId

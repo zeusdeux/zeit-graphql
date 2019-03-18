@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-03-18 Mon 19:30 -->
+<!-- 2019-03-18 Mon 19:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><a href="https://github.com/zeusdeux/zeit-graphql">Zeit APIs over GraphQL</a></title>
@@ -240,50 +240,52 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org83b0352">1. GETs <code>[4/19]</code></a>
+<li><a href="#org46b4a3e">1. GETs <code>[4/19]</code></a>
 <ul>
-<li><a href="#org0d5d98b">1.1. <span class="done DONE">DONE</span> List Deployments</a></li>
-<li><a href="#orgb73f8ed">1.2. <span class="done DONE">DONE</span> Get a Single Deployment</a></li>
-<li><a href="#orgb7464c7">1.3. <span class="done DONE">DONE</span> List Deployment Files</a></li>
-<li><a href="#orge66f93e">1.4. <span class="done DONE">DONE</span> Get Single File Contents</a></li>
-<li><a href="#orgd9b5e52">1.5. <span class="todo TODO">TODO</span> List Builds</a></li>
-<li><a href="#org2c3fa8e">1.6. <span class="todo TODO">TODO</span> Get Deployment Logs</a></li>
-<li><a href="#orgc4eba64">1.7. <span class="todo TODO">TODO</span> List all the Domains</a></li>
-<li><a href="#org567eb83">1.8. <span class="todo TODO">TODO</span> Check a Domain availability</a></li>
-<li><a href="#org035e526">1.9. <span class="todo TODO">TODO</span> Check the price of a domain</a></li>
-<li><a href="#orgddc07a0">1.10. <span class="todo TODO">TODO</span> List all the DNS records of a domain</a></li>
-<li><a href="#org6c47ef7">1.11. <span class="todo TODO">TODO</span> List all the certificates</a></li>
-<li><a href="#org3cd27e1">1.12. <span class="todo TODO">TODO</span> Get a single certificate</a></li>
-<li><a href="#org8067eb8">1.13. <span class="todo TODO">TODO</span> List all the aliases</a></li>
-<li><a href="#org33c9ccc">1.14. <span class="todo TODO">TODO</span> List aliases by deployment</a></li>
-<li><a href="#orgee106a9">1.15. <span class="todo TODO">TODO</span> List all the secrets</a></li>
-<li><a href="#org3858ec0">1.16. <span class="todo TODO">TODO</span> List all your teams</a></li>
-<li><a href="#orgdf8a03f">1.17. <span class="todo TODO">TODO</span> Get single team information</a></li>
-<li><a href="#orgdb97fbf">1.18. <span class="todo TODO">TODO</span> Get list of team members</a></li>
-<li><a href="#org373d880">1.19. <span class="todo TODO">TODO</span> Verify login</a></li>
+<li><a href="#orgc219e2a">1.1. <span class="done DONE">DONE</span> List Deployments</a></li>
+<li><a href="#org722fa51">1.2. <span class="done DONE">DONE</span> Get a Single Deployment</a></li>
+<li><a href="#org9c7d796">1.3. <span class="done DONE">DONE</span> List Deployment Files</a></li>
+<li><a href="#org83b3590">1.4. <span class="done DONE">DONE</span> Get Single File Contents</a></li>
+<li><a href="#orgb5a190c">1.5. <span class="todo TODO">TODO</span> List Builds</a></li>
+<li><a href="#org2637f0c">1.6. <span class="todo TODO">TODO</span> Get Deployment Logs</a></li>
+<li><a href="#org197cb57">1.7. <span class="todo TODO">TODO</span> List all the Domains</a></li>
+<li><a href="#orgf21706f">1.8. <span class="todo TODO">TODO</span> Check a Domain availability</a></li>
+<li><a href="#org4d6825d">1.9. <span class="todo TODO">TODO</span> Check the price of a domain</a></li>
+<li><a href="#org561d028">1.10. <span class="todo TODO">TODO</span> List all the DNS records of a domain</a></li>
+<li><a href="#org3fef27f">1.11. <span class="todo TODO">TODO</span> List all the certificates</a></li>
+<li><a href="#org6f12025">1.12. <span class="todo TODO">TODO</span> Get a single certificate</a></li>
+<li><a href="#org1c3279e">1.13. <span class="todo TODO">TODO</span> List all the aliases</a></li>
+<li><a href="#org7f0a134">1.14. <span class="todo TODO">TODO</span> List aliases by deployment</a></li>
+<li><a href="#orgbe3799b">1.15. <span class="todo TODO">TODO</span> List all the secrets</a></li>
+<li><a href="#orgfc8d6ea">1.16. <span class="todo TODO">TODO</span> List all your teams</a></li>
+<li><a href="#org49bc523">1.17. <span class="todo TODO">TODO</span> Get single team information</a></li>
+<li><a href="#orgf0a900a">1.18. <span class="todo TODO">TODO</span> Get list of team members</a></li>
+<li><a href="#org088fc87">1.19. <span class="todo TODO">TODO</span> Verify login</a></li>
 </ul>
 </li>
-<li><a href="#org115393c">2. Misc <code>[4/7]</code></a>
+<li><a href="#org75887db">2. Misc <code>[4/9]</code></a>
 <ul>
-<li><a href="#org4851a9b">2.1. <span class="done DONE">DONE</span> Refactor schema.ts</a></li>
-<li><a href="#org4cf8d25">2.2. <span class="done DONE">DONE</span> Enable introspection in prod based on env</a></li>
-<li><a href="#org1068eb9">2.3. <span class="done DONE">DONE</span> Mask errors and match Zeit api errors schema</a></li>
-<li><a href="#org9534709">2.4. <span class="done DONE">DONE</span> Make everything more typesafe</a></li>
-<li><a href="#org6714159">2.5. <span class="todo TODO">TODO</span> Fix the index key signature in types/deployment.ts</a></li>
-<li><a href="#orga7fecf4">2.6. <span class="todo TODO">TODO</span> Fix the index key signature in types/deployments.ts</a></li>
-<li><a href="#org0c390d2">2.7. <span class="todo TODO">TODO</span> Fix the index key signature in types/filesInDeployment.ts</a></li>
+<li><a href="#orgf43fc66">2.1. <span class="done DONE">DONE</span> Refactor schema.ts</a></li>
+<li><a href="#orgdbf9e12">2.2. <span class="done DONE">DONE</span> Enable introspection in prod based on env</a></li>
+<li><a href="#org1776f4f">2.3. <span class="done DONE">DONE</span> Mask errors and match Zeit api errors schema</a></li>
+<li><a href="#orgf25fecb">2.4. <span class="done DONE">DONE</span> Make everything more typesafe</a></li>
+<li><a href="#org59cb9b8">2.5. <span class="todo TODO">TODO</span> Fix the index key signature in types/deployment.ts</a></li>
+<li><a href="#orgadb67ba">2.6. <span class="todo TODO">TODO</span> Fix the index key signature in types/deployments.ts</a></li>
+<li><a href="#orga9c5633">2.7. <span class="todo TODO">TODO</span> Fix the index key signature in types/filesInDeployment.ts</a></li>
+<li><a href="#org45ebc63">2.8. <span class="todo TODO">TODO</span> Make delpoyments filterable by deploymentId</a></li>
+<li><a href="#org4a63944">2.9. <span class="todo TODO">TODO</span> Make files filterable by fileId</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org83b0352" class="outline-2">
-<h2 id="org83b0352"><span class="section-number-2">1</span> GETs <code>[4/19]</code></h2>
+<div id="outline-container-org46b4a3e" class="outline-2">
+<h2 id="org46b4a3e"><span class="section-number-2">1</span> GETs <code>[4/19]</code></h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org0d5d98b" class="outline-3">
-<h3 id="org0d5d98b"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> <a href="https://zeit.co/docs/api/#endpoints/deployments/list-deployments">List Deployments</a></h3>
+<div id="outline-container-orgc219e2a" class="outline-3">
+<h3 id="orgc219e2a"><span class="section-number-3">1.1</span> <span class="done DONE">DONE</span> <a href="https://zeit.co/docs/api/#endpoints/deployments/list-deployments">List Deployments</a></h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>State "DONE"       from "INPROGRESS" <span class="timestamp-wrapper"><span class="timestamp">[2019-03-14 Thu 17:20]</span></span></li>
@@ -294,8 +296,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-orgb73f8ed" class="outline-3">
-<h3 id="orgb73f8ed"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> <a href="https://zeit.co/docs/api/#endpoints/deployments/get-a-single-deployment">Get a Single Deployment</a></h3>
+<div id="outline-container-org722fa51" class="outline-3">
+<h3 id="org722fa51"><span class="section-number-3">1.2</span> <span class="done DONE">DONE</span> <a href="https://zeit.co/docs/api/#endpoints/deployments/get-a-single-deployment">Get a Single Deployment</a></h3>
 <div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li>State "DONE"       from "INPROGRESS" <span class="timestamp-wrapper"><span class="timestamp">[2019-03-16 Sat 03:53]</span></span></li>
@@ -306,8 +308,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-orgb7464c7" class="outline-3">
-<h3 id="orgb7464c7"><span class="section-number-3">1.3</span> <span class="done DONE">DONE</span> <a href="https://zeit.co/docs/api/#endpoints/deployments/list-deployment-files">List Deployment Files</a></h3>
+<div id="outline-container-org9c7d796" class="outline-3">
+<h3 id="org9c7d796"><span class="section-number-3">1.3</span> <span class="done DONE">DONE</span> <a href="https://zeit.co/docs/api/#endpoints/deployments/list-deployment-files">List Deployment Files</a></h3>
 <div class="outline-text-3" id="text-1-3">
 <ul class="org-ul">
 <li>State "DONE"       from "INPROGRESS" <span class="timestamp-wrapper"><span class="timestamp">[2019-03-17 Sun 19:49]</span></span></li>
@@ -320,8 +322,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-orge66f93e" class="outline-3">
-<h3 id="orge66f93e"><span class="section-number-3">1.4</span> <span class="done DONE">DONE</span> <a href="https://zeit.co/docs/api/#endpoints/deployments/get-single-file-contents">Get Single File Contents</a></h3>
+<div id="outline-container-org83b3590" class="outline-3">
+<h3 id="org83b3590"><span class="section-number-3">1.4</span> <span class="done DONE">DONE</span> <a href="https://zeit.co/docs/api/#endpoints/deployments/get-single-file-contents">Get Single File Contents</a></h3>
 <div class="outline-text-3" id="text-1-4">
 <ul class="org-ul">
 <li>State "DONE"       from "ONHOLD"     <span class="timestamp-wrapper"><span class="timestamp">[2019-03-18 Mon 19:06]</span></span></li>
@@ -337,104 +339,104 @@ field. Gotta think this through</li>
 </p>
 </div>
 </div>
-<div id="outline-container-orgd9b5e52" class="outline-3">
-<h3 id="orgd9b5e52"><span class="section-number-3">1.5</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/deployments/list-builds">List Builds</a></h3>
+<div id="outline-container-orgb5a190c" class="outline-3">
+<h3 id="orgb5a190c"><span class="section-number-3">1.5</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/deployments/list-builds">List Builds</a></h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 <code>GET /v5/now/deployments/:id/builds</code>
 </p>
 </div>
 </div>
-<div id="outline-container-org2c3fa8e" class="outline-3">
-<h3 id="org2c3fa8e"><span class="section-number-3">1.6</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/logs/get-deployment-logs">Get Deployment Logs</a></h3>
+<div id="outline-container-org2637f0c" class="outline-3">
+<h3 id="org2637f0c"><span class="section-number-3">1.6</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/logs/get-deployment-logs">Get Deployment Logs</a></h3>
 <div class="outline-text-3" id="text-1-6">
 <p>
 <code>GET /v2/now/deployments/:id/events</code>
 </p>
 </div>
 </div>
-<div id="outline-container-orgc4eba64" class="outline-3">
-<h3 id="orgc4eba64"><span class="section-number-3">1.7</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/domains/list-all-the-domains">List all the Domains</a></h3>
+<div id="outline-container-org197cb57" class="outline-3">
+<h3 id="org197cb57"><span class="section-number-3">1.7</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/domains/list-all-the-domains">List all the Domains</a></h3>
 <div class="outline-text-3" id="text-1-7">
 <p>
 <code>GET /v4/domains</code>
 </p>
 </div>
 </div>
-<div id="outline-container-org567eb83" class="outline-3">
-<h3 id="org567eb83"><span class="section-number-3">1.8</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/domains/check-a-domain-availability">Check a Domain availability</a></h3>
+<div id="outline-container-orgf21706f" class="outline-3">
+<h3 id="orgf21706f"><span class="section-number-3">1.8</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/domains/check-a-domain-availability">Check a Domain availability</a></h3>
 <div class="outline-text-3" id="text-1-8">
 <p>
 <code>GET /v4/domains/status?name</code>
 </p>
 </div>
 </div>
-<div id="outline-container-org035e526" class="outline-3">
-<h3 id="org035e526"><span class="section-number-3">1.9</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/domains/check-the-price-of-a-domain">Check the price of a domain</a></h3>
+<div id="outline-container-org4d6825d" class="outline-3">
+<h3 id="org4d6825d"><span class="section-number-3">1.9</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/domains/check-the-price-of-a-domain">Check the price of a domain</a></h3>
 <div class="outline-text-3" id="text-1-9">
 <p>
 <code>GET /v4/domains/price?name</code>
 </p>
 </div>
 </div>
-<div id="outline-container-orgddc07a0" class="outline-3">
-<h3 id="orgddc07a0"><span class="section-number-3">1.10</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/dns/list-all-the-dns-records-of-a-domain">List all the DNS records of a domain</a></h3>
+<div id="outline-container-org561d028" class="outline-3">
+<h3 id="org561d028"><span class="section-number-3">1.10</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/dns/list-all-the-dns-records-of-a-domain">List all the DNS records of a domain</a></h3>
 <div class="outline-text-3" id="text-1-10">
 <p>
 <code>GET /v2/domains/:domain/records</code>
 </p>
 </div>
 </div>
-<div id="outline-container-org6c47ef7" class="outline-3">
-<h3 id="org6c47ef7"><span class="section-number-3">1.11</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/certificates/list-all-the-certificates">List all the certificates</a></h3>
+<div id="outline-container-org3fef27f" class="outline-3">
+<h3 id="org3fef27f"><span class="section-number-3">1.11</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/certificates/list-all-the-certificates">List all the certificates</a></h3>
 <div class="outline-text-3" id="text-1-11">
 <p>
 <code>GET /v3/now/certs</code>
 </p>
 </div>
 </div>
-<div id="outline-container-org3cd27e1" class="outline-3">
-<h3 id="org3cd27e1"><span class="section-number-3">1.12</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/certificates/get-a-single-certificate">Get a single certificate</a></h3>
+<div id="outline-container-org6f12025" class="outline-3">
+<h3 id="org6f12025"><span class="section-number-3">1.12</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/certificates/get-a-single-certificate">Get a single certificate</a></h3>
 <div class="outline-text-3" id="text-1-12">
 <p>
 <code>GET /v3/now/certs/:id</code>
 </p>
 </div>
 </div>
-<div id="outline-container-org8067eb8" class="outline-3">
-<h3 id="org8067eb8"><span class="section-number-3">1.13</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/aliases/list-all-the-aliases">List all the aliases</a></h3>
+<div id="outline-container-org1c3279e" class="outline-3">
+<h3 id="org1c3279e"><span class="section-number-3">1.13</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/aliases/list-all-the-aliases">List all the aliases</a></h3>
 <div class="outline-text-3" id="text-1-13">
 <p>
 <code>GET /v2/now/aliases</code>
 </p>
 </div>
 </div>
-<div id="outline-container-org33c9ccc" class="outline-3">
-<h3 id="org33c9ccc"><span class="section-number-3">1.14</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/aliases/list-aliases-by-deployment">List aliases by deployment</a></h3>
+<div id="outline-container-org7f0a134" class="outline-3">
+<h3 id="org7f0a134"><span class="section-number-3">1.14</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/aliases/list-aliases-by-deployment">List aliases by deployment</a></h3>
 <div class="outline-text-3" id="text-1-14">
 <p>
 <code>GET /v2/now/deployments/:id/aliases</code>
 </p>
 </div>
 </div>
-<div id="outline-container-orgee106a9" class="outline-3">
-<h3 id="orgee106a9"><span class="section-number-3">1.15</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/secrets/list-all-the-secrets">List all the secrets</a></h3>
+<div id="outline-container-orgbe3799b" class="outline-3">
+<h3 id="orgbe3799b"><span class="section-number-3">1.15</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/secrets/list-all-the-secrets">List all the secrets</a></h3>
 <div class="outline-text-3" id="text-1-15">
 <p>
 <code>GET /v2/now/secrets</code>
 </p>
 </div>
 </div>
-<div id="outline-container-org3858ec0" class="outline-3">
-<h3 id="org3858ec0"><span class="section-number-3">1.16</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/teams/list-all-your-teams">List all your teams</a></h3>
+<div id="outline-container-orgfc8d6ea" class="outline-3">
+<h3 id="orgfc8d6ea"><span class="section-number-3">1.16</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/teams/list-all-your-teams">List all your teams</a></h3>
 <div class="outline-text-3" id="text-1-16">
 <p>
 <code>GET /v1/teams</code>
 </p>
 </div>
 </div>
-<div id="outline-container-orgdf8a03f" class="outline-3">
-<h3 id="orgdf8a03f"><span class="section-number-3">1.17</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/teams/get-single-team-information">Get single team information</a></h3>
+<div id="outline-container-org49bc523" class="outline-3">
+<h3 id="org49bc523"><span class="section-number-3">1.17</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/teams/get-single-team-information">Get single team information</a></h3>
 <div class="outline-text-3" id="text-1-17">
 <p>
 <code>GET /v1/teams/:id</code>
@@ -442,16 +444,16 @@ field. Gotta think this through</li>
 </p>
 </div>
 </div>
-<div id="outline-container-orgdb97fbf" class="outline-3">
-<h3 id="orgdb97fbf"><span class="section-number-3">1.18</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/teams/get-list-of-team-members">Get list of team members</a></h3>
+<div id="outline-container-orgf0a900a" class="outline-3">
+<h3 id="orgf0a900a"><span class="section-number-3">1.18</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/teams/get-list-of-team-members">Get list of team members</a></h3>
 <div class="outline-text-3" id="text-1-18">
 <p>
 <code>GET /v1/teams/:id/members</code>
 </p>
 </div>
 </div>
-<div id="outline-container-org373d880" class="outline-3">
-<h3 id="org373d880"><span class="section-number-3">1.19</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/authentication/verify-loginv">Verify login</a></h3>
+<div id="outline-container-org088fc87" class="outline-3">
+<h3 id="org088fc87"><span class="section-number-3">1.19</span> <span class="todo TODO">TODO</span> <a href="https://zeit.co/docs/api/#endpoints/authentication/verify-loginv">Verify login</a></h3>
 <div class="outline-text-3" id="text-1-19">
 <p>
 <code>GET /now/registration/verify?email&amp;token</code>
@@ -460,12 +462,12 @@ field. Gotta think this through</li>
 </div>
 </div>
 
-<div id="outline-container-org115393c" class="outline-2">
-<h2 id="org115393c"><span class="section-number-2">2</span> Misc <code>[4/7]</code></h2>
+<div id="outline-container-org75887db" class="outline-2">
+<h2 id="org75887db"><span class="section-number-2">2</span> Misc <code>[4/9]</code></h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org4851a9b" class="outline-3">
-<h3 id="org4851a9b"><span class="section-number-3">2.1</span> <span class="done DONE">DONE</span> Refactor <a href="api/schema.ts">schema.ts</a></h3>
+<div id="outline-container-orgf43fc66" class="outline-3">
+<h3 id="orgf43fc66"><span class="section-number-3">2.1</span> <span class="done DONE">DONE</span> Refactor <a href="api/schema.ts">schema.ts</a></h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>State "DONE"       from "INPROGRESS" <span class="timestamp-wrapper"><span class="timestamp">[2019-03-17 Sun 15:25]</span></span></li>
@@ -477,8 +479,8 @@ deployments</li>
 </div>
 </div>
 
-<div id="outline-container-org4cf8d25" class="outline-3">
-<h3 id="org4cf8d25"><span class="section-number-3">2.2</span> <span class="done DONE">DONE</span> Enable introspection in prod based on env</h3>
+<div id="outline-container-orgdbf9e12" class="outline-3">
+<h3 id="orgdbf9e12"><span class="section-number-3">2.2</span> <span class="done DONE">DONE</span> Enable introspection in prod based on env</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li>State "DONE"       from "INPROGRESS" <span class="timestamp-wrapper"><span class="timestamp">[2019-03-17 Sun 15:45]</span></span></li>
@@ -486,8 +488,8 @@ deployments</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org1068eb9" class="outline-3">
-<h3 id="org1068eb9"><span class="section-number-3">2.3</span> <span class="done DONE">DONE</span> Mask errors and match Zeit api <a href="https://zeit.co/docs/api/#api-basics/errors">errors schema</a></h3>
+<div id="outline-container-org1776f4f" class="outline-3">
+<h3 id="org1776f4f"><span class="section-number-3">2.3</span> <span class="done DONE">DONE</span> Mask errors and match Zeit api <a href="https://zeit.co/docs/api/#api-basics/errors">errors schema</a></h3>
 <div class="outline-text-3" id="text-2-3">
 <ul class="org-ul">
 <li>State "DONE"       from "INPROGRESS" <span class="timestamp-wrapper"><span class="timestamp">[2019-03-17 Sun 16:02]</span></span></li>
@@ -495,8 +497,8 @@ deployments</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9534709" class="outline-3">
-<h3 id="org9534709"><span class="section-number-3">2.4</span> <span class="done DONE">DONE</span> Make everything more typesafe</h3>
+<div id="outline-container-orgf25fecb" class="outline-3">
+<h3 id="orgf25fecb"><span class="section-number-3">2.4</span> <span class="done DONE">DONE</span> Make everything more typesafe</h3>
 <div class="outline-text-3" id="text-2-4">
 <ul class="org-ul">
 <li>State "DONE"       from "INPROGRESS" <span class="timestamp-wrapper"><span class="timestamp">[2019-03-18 Mon 17:11]</span></span></li>
@@ -504,14 +506,33 @@ deployments</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org6714159" class="outline-3">
-<h3 id="org6714159"><span class="section-number-3">2.5</span> <span class="todo TODO">TODO</span> Fix <a href="api/types/deployment.ts#MissingReference">the index key signature in types/deployment.ts</a></h3>
+<div id="outline-container-org59cb9b8" class="outline-3">
+<h3 id="org59cb9b8"><span class="section-number-3">2.5</span> <span class="todo TODO">TODO</span> Fix <a href="api/types/deployment.ts#MissingReference">the index key signature in types/deployment.ts</a></h3>
 </div>
-<div id="outline-container-orga7fecf4" class="outline-3">
-<h3 id="orga7fecf4"><span class="section-number-3">2.6</span> <span class="todo TODO">TODO</span> Fix <a href="api/types/deployments.ts#MissingReference">the index key signature in types/deployments.ts</a></h3>
+<div id="outline-container-orgadb67ba" class="outline-3">
+<h3 id="orgadb67ba"><span class="section-number-3">2.6</span> <span class="todo TODO">TODO</span> Fix <a href="api/types/deployments.ts#MissingReference">the index key signature in types/deployments.ts</a></h3>
 </div>
-<div id="outline-container-org0c390d2" class="outline-3">
-<h3 id="org0c390d2"><span class="section-number-3">2.7</span> <span class="todo TODO">TODO</span> Fix <a href="api/types/filesInDeployment.ts#MissingReference">the index key signature in types/filesInDeployment.ts</a></h3>
+<div id="outline-container-orga9c5633" class="outline-3">
+<h3 id="orga9c5633"><span class="section-number-3">2.7</span> <span class="todo TODO">TODO</span> Fix <a href="api/types/filesInDeployment.ts#MissingReference">the index key signature in types/filesInDeployment.ts</a></h3>
+</div>
+<div id="outline-container-org45ebc63" class="outline-3">
+<h3 id="org45ebc63"><span class="section-number-3">2.8</span> <span class="todo TODO">TODO</span> Make delpoyments filterable by deploymentId</h3>
+<div class="outline-text-3" id="text-2-8">
+<p>
+To do so, use a union type SuccinctDeployment | Deployment and
+based on whether a deploymentId is provided as an arg to
+<code>deployments</code> root field, return one of those two types. More <a href="https://www.apollographql.com/docs/graphql-tools/resolvers.html#Unions-and-interfaces">on
+this page</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-org4a63944" class="outline-3">
+<h3 id="org4a63944"><span class="section-number-3">2.9</span> <span class="todo TODO">TODO</span> Make files filterable by fileId</h3>
+<div class="outline-text-3" id="text-2-9">
+<p>
+Do the same as for deployments with deploymentId
+</p>
+</div>
 </div>
 </div>
 </div>
