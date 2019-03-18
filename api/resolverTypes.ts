@@ -5,6 +5,7 @@ export interface Args {
 }
 
 export interface ZeitGqlContext {
+  readonly authToken: string
   readonly dataSources: {
     readonly zeitAPI: ZeitAPI
   }
