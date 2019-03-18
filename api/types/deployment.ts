@@ -73,7 +73,9 @@ export interface DeploymentResolverType {
   // marking all trivial resolvers as optional so that things typecheck
   // this is because trivial resolvers are not defined in the resolver for Deployment type itself
   // as they are as simple as, for e.g., id: parent => parent.id
-  Deployment: { [P in keyof Deployment]?: (parent: Deployment) => Deployment[P] } & {
+  Deployment: {
+    [P in keyof Deployment]?: (parent: Deployment & { teamId?: string }) => Deployment[P]
+  } & {
     files: (
       parent: Deployment & { teamId?: string },
       args: {},

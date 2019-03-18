@@ -40,6 +40,7 @@ export const FileTypeDef = gql`
     name: String!
     type: FileType!
     mode: Int!
+    rawContent: String
     children: [File]
   }
 

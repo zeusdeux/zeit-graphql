@@ -29,6 +29,12 @@ export class ZeitAPI extends RESTDataSource<ZeitGqlContext> {
     return this.get(endpoint)
   }
 
+  public getDeploymentFile(deploymentId: string, fileId: string, teamId?: string): Promise<string> {
+    const endpoint = withTeamId(`/v5/now/deployments/${deploymentId}/files/${fileId}`, teamId)
+
+    return this.get(endpoint)
+  }
+
   protected willSendRequest(request: RequestOptions) {
     request.headers.set('Authorization', this.context.authToken)
   }
