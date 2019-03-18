@@ -2,7 +2,7 @@
 #+STARTUP: overview
 #+Title: [[https://github.com/zeusdeux/zeit-graphql][Zeit APIs over GraphQL]]
 
-* GETs [3/19]
+* GETs [4/19]
 ** DONE [[https://zeit.co/docs/api/#endpoints/deployments/list-deployments][List Deployments]]
    - State "DONE"       from "INPROGRESS" [2019-03-14 Thu 17:20]
    - State "INPROGRESS" from "TODO"       [2019-03-12 Tue 15:30]
@@ -17,7 +17,14 @@
    - State "DONE"       from "INPROGRESS" [2019-03-17 Sun 18:41]
    - State "INPROGRESS" from "TODO"       [2019-03-17 Sun 16:57]
    ~GET /v5/now/deployments/:id/files~
-** TODO [[https://zeit.co/docs/api/#endpoints/deployments/get-single-file-contents][Get Single File Contents]]
+** DONE [[https://zeit.co/docs/api/#endpoints/deployments/get-single-file-contents][Get Single File Contents]]
+   - State "DONE"       from "ONHOLD"     [2019-03-18 Mon 19:06]
+   - State "ONHOLD" from "INPROGRESS" [2019-03-18 Mon 17:39] \\
+     Thinking about the graphql schema as whole from a consumers
+     perspective, trying to figure out if this should be nested under
+     =files= or should deployment root field have a new =file=
+     field. Gotta think this through
+   - State "INPROGRESS" from "TODO"       [2019-03-18 Mon 17:32]
    ~GET /v5/now/deployments/:id/files/:fileId~
 ** TODO [[https://zeit.co/docs/api/#endpoints/deployments/list-builds][List Builds]]
    ~GET /v5/now/deployments/:id/builds~
