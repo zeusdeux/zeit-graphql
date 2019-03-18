@@ -1,4 +1,4 @@
-import { ZeitAPI } from './zeitHttpDataSource'
+import { ZeitAPI } from '../zeitHttpDataSource'
 
 export interface Args {
   readonly teamId?: string

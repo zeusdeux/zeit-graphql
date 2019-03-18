@@ -1,7 +1,7 @@
 import { makeExecutableSchema } from 'graphql-tools'
 import { DeploymentArgs } from './deployment'
-import { ZeitGqlContext } from './resolverTypes'
 import { FileTypeDef } from './sharedTypeDefs'
+import { ZeitGqlContext } from './types/resolverTypes'
 
 const gql = String.raw
 
