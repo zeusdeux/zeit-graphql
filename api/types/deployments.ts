@@ -25,10 +25,12 @@ export interface DeploymentsResolverType {
     ) => Promise<SuccintDeployment[]>
   }
 
-  // this is a trivial resolver hence optional
+  // this are trivial resolvers hence optional
   SuccintDeployment?: {
     [key in keyof SuccintDeployment]?: (parent: SuccintDeployment) => SuccintDeployment[key]
   }
+  User?: { [key in keyof User]?: (parent: User) => User[key] }
+  DeploymentState?: (parent: DeploymentState) => [keyof typeof DeploymentState]
 
   // For compatibility with IExecutableSchemaDefinition.resolvers which is the type of
   // the resolvers option passed to makeExecutableSchema
