@@ -2,7 +2,7 @@
 #+STARTUP: overview
 #+Title: [[https://github.com/zeusdeux/zeit-graphql][Zeit APIs over GraphQL]]
 
-* GETs [4/19]
+* GETs [5/20]
 ** DONE [[https://zeit.co/docs/api/#endpoints/deployments/list-deployments][List Deployments]]
    - State "DONE"       from "INPROGRESS" [2019-03-14 Thu 17:20]
    - State "INPROGRESS" from "TODO"       [2019-03-12 Tue 15:30]
@@ -26,8 +26,11 @@
      field. Gotta think this through
    - State "INPROGRESS" from "TODO"       [2019-03-18 Mon 17:32]
    ~GET /v5/now/deployments/:id/files/:fileId~
-** TODO [[https://zeit.co/docs/api/#endpoints/deployments/list-builds][List Builds]]
+** DONE [[https://zeit.co/docs/api/#endpoints/deployments/list-builds][List Builds]]
+   - State "DONE"       from "INPROGRESS" [2019-03-19 Tue 19:39]
+   - State "INPROGRESS" from "TODO"       [2019-03-19 Tue 18:02]
    ~GET /v5/now/deployments/:id/builds~
+** TODO Add builds under ~deployment~ root field
 ** TODO [[https://zeit.co/docs/api/#endpoints/logs/get-deployment-logs][Get Deployment Logs]]
    ~GET /v2/now/deployments/:id/events~
 ** TODO [[https://zeit.co/docs/api/#endpoints/domains/list-all-the-domains][List all the Domains]]
