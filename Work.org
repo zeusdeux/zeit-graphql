@@ -88,3 +88,12 @@
    this page]].
 ** TODO Make files filterable by fileId
    Do the same as for deployments with deploymentId
+
+* Running notes
+  - It'd be nice to have the ~deployments~ collection endpoint return
+    the same shape as a single deployment (~deployments/:id~)
+  - In lieu of the point above, it'd be nice if the api either
+    provided a way to distinguish the type of owner (team or user) or
+    let the user pass any ~ownerId~ for the ~teamId~ query param thus
+    not forcing the user to know how to differentiate between types of
+    owners.
