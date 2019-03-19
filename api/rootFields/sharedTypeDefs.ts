@@ -34,6 +34,15 @@ export const HttpMethodTypeDef = gql`
     PATCH
   }
 `
+
+export const FileTypeEnumDef = gql`
+  enum FileType {
+    file
+    directory
+    lambda
+  }
+`
+
 export const FileTypeDef = gql`
   type File {
     uid: ID
@@ -44,9 +53,5 @@ export const FileTypeDef = gql`
     children: [File]
   }
 
-  enum FileType {
-    file
-    directory
-    lambda
-  }
+  ${FileTypeEnumDef}
 `

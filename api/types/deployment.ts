@@ -7,7 +7,7 @@ export enum TargetEnv {
   production = 'production'
 }
 
-export interface Build {
+export interface SuccinctBuild {
   src: string
   use: string
 }
@@ -46,7 +46,7 @@ export interface Deployment {
   version: number
   regions: Region[]
   routes?: Route[]
-  builds: Build[]
+  builds: SuccinctBuild[]
   plan: string
   public: boolean
   ownerId: string
@@ -74,7 +74,7 @@ export interface DeploymentResolverType {
   // this is because trivial resolvers are not defined in the resolver for Deployment type itself
   // as they are as simple as, for e.g., id: parent => parent.id
   Deployment: {
-    [P in keyof Deployment]?: (parent: Deployment & { teamId?: string }) => Deployment[P]
+    [key in keyof Deployment]?: (parent: Deployment & { teamId?: string }) => Deployment[key]
   } & {
     files: (
       parent: Deployment & { teamId?: string },

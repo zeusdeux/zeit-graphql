@@ -27,7 +27,7 @@ export interface DeploymentsResolverType {
 
   // this is a trivial resolver hence optional
   SuccintDeployment?: {
-    [P in keyof SuccintDeployment]?: (parent: SuccintDeployment) => SuccintDeployment[P]
+    [key in keyof SuccintDeployment]?: (parent: SuccintDeployment) => SuccintDeployment[key]
   }
 
   // For compatibility with IExecutableSchemaDefinition.resolvers which is the type of

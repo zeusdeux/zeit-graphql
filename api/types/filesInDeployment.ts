@@ -23,9 +23,8 @@ export interface FilesInDeploymentResolverType {
     ) => Promise<File[]>
   }
 
-  // this is a trivial resolver hence optional
-  File?: {
-    [P in keyof File]?: (parent: File & ExtraFieldsForFileRawContentDelegation) => File[P]
+  File: {
+    [key in keyof File]?: (parent: File & ExtraFieldsForFileRawContentDelegation) => File[key]
   } & {
     rawContent: (
       parent: File & ExtraFieldsForFileRawContentDelegation,

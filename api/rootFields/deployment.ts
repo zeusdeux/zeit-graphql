@@ -20,8 +20,8 @@ const TargetEnvTypeDef = gql`
   }
 `
 
-const BuildTypeDef = gql`
-  type Build {
+const SuccinctBuildTypeDef = gql`
+  type SuccinctBuild {
     src: String!
     use: String!
   }
@@ -111,7 +111,7 @@ export const DeploymentSchema: GraphQLSchema = makeExecutableSchema<ZeitGqlConte
       version: Int!
       regions: [Region]!
       routes: [Route]
-      builds: [Build]!
+      builds: [SuccinctBuild]!
       plan: String!
       public: Boolean!
       ownerId: ID!
@@ -130,7 +130,7 @@ export const DeploymentSchema: GraphQLSchema = makeExecutableSchema<ZeitGqlConte
     ${LambdaTypeDef}
     ${TargetEnvTypeDef}
     ${DeploymentStateTypeDef}
-    ${BuildTypeDef}
+    ${SuccinctBuildTypeDef}
     ${RouteTypeDef}
     ${RegionTypeDef}
   `,

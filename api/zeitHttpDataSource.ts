@@ -1,4 +1,5 @@
 import { RequestOptions, RESTDataSource } from 'apollo-datasource-rest'
+import { Build } from './types/buildsInDeployment'
 import { Deployment } from './types/deployment'
 import { SuccintDeployment } from './types/deployments'
 import { ZeitGqlContext } from './types/resolverTypes'
@@ -33,6 +34,13 @@ export class ZeitAPI extends RESTDataSource<ZeitGqlContext> {
     const endpoint = withTeamId(`/v5/now/deployments/${deploymentId}/files/${fileId}`, teamId)
 
     return this.get(endpoint)
+  }
+
+  public async getDeploymentBuilds(deploymentId: string, teamId?: string): Promise<Build[]> {
+    const endpoint = withTeamId(`/v5/now/deployments/${deploymentId}/builds`, teamId)
+
+    const { builds }: { builds: Build[] } = await this.get(endpoint)
+    return builds
   }
 
   protected willSendRequest(request: RequestOptions) {

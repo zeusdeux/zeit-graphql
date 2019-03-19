@@ -35,7 +35,7 @@ export interface File {
   children?: File[]
 }
 
-enum FileType {
+export enum FileType {
   file = 'file',
   directory = 'directory',
   lambda = 'lambda'
