@@ -61,7 +61,7 @@
 ** TODO [[https://zeit.co/docs/api/#endpoints/authentication/verify-loginv][Verify login]]
    ~GET /now/registration/verify?email&token~
 
-* Misc [5/9]
+* Misc [5/10]
 ** DONE Refactor [[file:api/schema.ts][schema.ts]]
    - State "DONE"       from "INPROGRESS" [2019-03-17 Sun 15:25]
    - State "INPROGRESS" from "TODO"       [2019-03-17 Sun 14:20]
@@ -91,7 +91,10 @@
    this page]].
 ** TODO Make files filterable by fileId
    Do the same as for deployments with deploymentId
-
+** TODO Collect all the ts types in one big file to not have to work around all the circular dependencies
+   for e.g., DeploymentTypeResolver.builds needs the Build interface
+   which in turn is housed in file that needs the Deployment
+   interface. Fucking hate circular dependencies.
 * Running notes
   - It'd be nice to have the ~deployments~ collection endpoint return
     the same shape as a single deployment (~deployments/:id~)
