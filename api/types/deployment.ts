@@ -1,15 +1,10 @@
 import { IGraphQLToolsResolveInfo } from 'graphql-tools'
 import { Args, ZeitGqlContext } from './resolverTypes'
-import { DeploymentState, File, HttpMethod, Region } from './sharedTypeDefs'
+import { File, HttpMethod, ReadyState, Region } from './sharedTypeDefs'
 
 export enum TargetEnv {
   staging = 'staging',
   production = 'production'
-}
-
-export interface SuccinctBuild {
-  src: string
-  use: string
 }
 
 export interface Route {
@@ -18,20 +13,6 @@ export interface Route {
   headers?: { [key: string]: string }
   status?: number
   methods?: HttpMethod[]
-}
-
-export interface Lambda {
-  id: string
-  entrypoint: string
-  readyState: DeploymentState
-  readyStateAt: string
-  createdAt: string
-  output?: LambdaOutput[]
-}
-
-interface LambdaOutput {
-  path: string
-  functionName: string
 }
 
 export interface DeploymentArgs extends Args {
@@ -46,18 +27,16 @@ export interface Deployment {
   version: number
   regions: Region[]
   routes?: Route[]
-  builds: SuccinctBuild[]
   plan: string
   public: boolean
   ownerId: string
-  readyState: DeploymentState
+  readyState: ReadyState
   createdAt: string
   createdIn: Region
   // env: <> Same problem as meta. It's user defined. Figure this out.
   // build: BuildEnv
   target?: TargetEnv
   aliasFinal?: string[]
-  lambdas?: Lambda[]
 }
 
 export type DeploymentTypeResolver = {
@@ -75,6 +54,15 @@ export type DeploymentTypeResolver = {
     context: ZeitGqlContext,
     info: IGraphQLToolsResolveInfo
   ) => Promise<File[]>
+
+  builds: (
+    parent: Deployment & {
+      teamId?: string
+    },
+    args: {},
+    context: ZeitGqlContext,
+    info: IGraphQLToolsResolveInfo
+  ) => Promise<any> // TODO: Update this to Promise<Array<Build & { teamId?: string }>> after solving the circular dependency
 }
 
 export interface DeploymentResolverType {

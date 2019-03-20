@@ -1,6 +1,6 @@
 import { IGraphQLToolsResolveInfo } from 'graphql-tools'
 import { Args, ZeitGqlContext } from './resolverTypes'
-import { DeploymentState } from './sharedTypeDefs'
+import { ReadyState } from './sharedTypeDefs'
 
 export interface SuccintDeployment {
   uid: string
@@ -8,7 +8,7 @@ export interface SuccintDeployment {
   url?: string
   created: string
   creator: User
-  state: DeploymentState
+  state: ReadyState
 }
 
 interface User {
@@ -30,7 +30,7 @@ export interface DeploymentsResolverType {
     [key in keyof SuccintDeployment]?: (parent: SuccintDeployment) => SuccintDeployment[key]
   }
   User?: { [key in keyof User]?: (parent: User) => User[key] }
-  DeploymentState?: (parent: DeploymentState) => [keyof typeof DeploymentState]
+  ReadyState?: (parent: ReadyState) => [keyof typeof ReadyState]
 
   // For compatibility with IExecutableSchemaDefinition.resolvers which is the type of
   // the resolvers option passed to makeExecutableSchema

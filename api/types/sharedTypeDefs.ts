@@ -1,4 +1,4 @@
-export enum DeploymentState {
+export enum ReadyState {
   INITIALIZING = 'INITIALIZING',
   ANALYZING = 'ANALYZING',
   BUILDING = 'BUILDING',

@@ -1,9 +1,4 @@
-import {
-  DeploymentStateTypeDef,
-  FileTypeDef,
-  HttpMethodTypeDef,
-  RegionTypeDef
-} from './sharedTypeDefs'
+import { FileTypeDef, HttpMethodTypeDef, ReadyStateTypeDef, RegionTypeDef } from './sharedTypeDefs'
 
 const gql = String.raw
 
@@ -11,13 +6,6 @@ const TargetEnvTypeDef = gql`
   enum TargetEnv {
     staging
     production
-  }
-`
-
-const SuccinctBuildTypeDef = gql`
-  type SuccinctBuild {
-    src: String!
-    use: String!
   }
 `
 
@@ -33,22 +21,6 @@ const RouteTypeDef = gql`
   ${HttpMethodTypeDef}
 `
 
-const LambdaTypeDef = gql`
-  type Lambda {
-    id: ID!
-    entrypoint: String!
-    readyState: DeploymentState!
-    readyStateAt: String!
-    createdAt: String!
-    output: [LambdaOutput]
-  }
-
-  type LambdaOutput {
-    path: String
-    functionName: String
-  }
-`
-
 export const DeploymentTypeDef = gql`
   type Deployment {
     id: ID!
@@ -58,26 +30,27 @@ export const DeploymentTypeDef = gql`
     version: Int!
     regions: [Region]!
     routes: [Route]
-    builds: [SuccinctBuild]!
     plan: String!
     public: Boolean!
     ownerId: ID!
-    readyState: DeploymentState!
+    readyState: ReadyState!
     createdAt: String!
     createdIn: Region!
     # env: <> Same problem as meta. It's user defined. Figure this out.
     # build: BuildEnv
     target: TargetEnv
     aliasFinal: [String]
-    lambdas: [Lambda]
+
+    # Custom objects in the graph connected below using delegateToSchema
+    # This gets files in the current deployment
     files: [File]
+    # this is available in buildsInDeployment.schema.ts as that's a superset of this typedef
+    builds: [Build]!
   }
 
   ${FileTypeDef}
-  ${LambdaTypeDef}
   ${TargetEnvTypeDef}
-  ${DeploymentStateTypeDef}
-  ${SuccinctBuildTypeDef}
+  ${ReadyStateTypeDef}
   ${RouteTypeDef}
   ${RegionTypeDef}
 `

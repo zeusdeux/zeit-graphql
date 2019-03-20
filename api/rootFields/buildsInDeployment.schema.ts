@@ -39,7 +39,7 @@ export const BuildsInDeploymentTypeDef = gql`
     ready or in an error state.
     Possible values are INITIALIZING, ANALYZING, BUILDING, DEPLOYING, READY, or ERROR.
     """
-    readyState: DeploymentState!
+    readyState: ReadyState!
 
     """
     The time at which the Build state was last modified.

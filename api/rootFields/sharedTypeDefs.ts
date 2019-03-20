@@ -1,7 +1,7 @@
 const gql = String.raw
 
-export const DeploymentStateTypeDef = gql`
-  enum DeploymentState {
+export const ReadyStateTypeDef = gql`
+  enum ReadyState {
     INITIALIZING
     ANALYZING
     BUILDING

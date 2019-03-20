@@ -3,7 +3,8 @@ import { delegateToSchema, makeExecutableSchema } from 'graphql-tools'
 import { DeploymentResolverType } from '../types/deployment'
 import { ZeitGqlContext } from '../types/resolverTypes'
 import { File } from '../types/sharedTypeDefs'
-import { DeploymentTypeDef } from './deployment.schema'
+import { BuildsInDeploymentSchema } from './buildsInDeployment'
+import { BuildsInDeploymentTypeDef } from './buildsInDeployment.schema'
 import { FilesInDeploymentSchema } from './filesInDeployment'
 
 const gql = String.raw
@@ -43,6 +44,20 @@ const DeploymentResolver: DeploymentResolverType = {
         context,
         info
       }) as Promise<File[]>
+    },
+
+    builds(parent, _args, context, info) {
+      return delegateToSchema({
+        operation: 'query',
+        fieldName: 'buildsInDeployment',
+        schema: BuildsInDeploymentSchema,
+        args: {
+          deploymentId: parent.id,
+          teamId: parent.teamId
+        },
+        context,
+        info
+      })
     }
   }
 }
@@ -56,7 +71,8 @@ export const DeploymentSchema: GraphQLSchema = makeExecutableSchema<ZeitGqlConte
       deployment(deploymentId: ID!, teamId: ID): Deployment
     }
 
-    ${DeploymentTypeDef}
+    # this typedef is a superset of deployment type def hence only this is needed here
+    ${BuildsInDeploymentTypeDef}
   `,
   resolvers: DeploymentResolver
 })

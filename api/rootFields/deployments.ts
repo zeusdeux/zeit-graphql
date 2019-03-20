@@ -2,7 +2,7 @@ import { GraphQLSchema } from 'graphql'
 import { makeExecutableSchema } from 'graphql-tools'
 import { DeploymentsResolverType } from '../types/deployments'
 import { ZeitGqlContext } from '../types/resolverTypes'
-import { DeploymentStateTypeDef } from './sharedTypeDefs'
+import { ReadyStateTypeDef } from './sharedTypeDefs'
 
 const gql = String.raw
 
@@ -35,14 +35,14 @@ export const DeploymentsSchema: GraphQLSchema = makeExecutableSchema<ZeitGqlCont
       url: String
       created: String!
       creator: User!
-      state: DeploymentState!
+      state: ReadyState!
     }
 
     type User {
       uid: ID!
     }
 
-    ${DeploymentStateTypeDef}
+    ${ReadyStateTypeDef}
   `,
   resolvers: DeploymentsResolver
 })

@@ -1,7 +1,7 @@
 import { IGraphQLToolsResolveInfo } from 'graphql-tools'
 import { Deployment, DeploymentArgs } from './deployment'
 import { ZeitGqlContext } from './resolverTypes'
-import { DeploymentState, FileType, Region } from './sharedTypeDefs'
+import { FileType, ReadyState, Region } from './sharedTypeDefs'
 
 interface BuiltLambdaInfo {
   functionName: string
@@ -25,7 +25,7 @@ export interface Build {
   createdIn: Region
   scheduledAt?: string
   createdAt: string
-  readyState: DeploymentState
+  readyState: ReadyState
   readyStateAt: string
   output?: BuildOutput[]
 }
@@ -50,7 +50,7 @@ export interface BuildsInDeploymentResolverType {
     ) => Promise<Deployment & { teamId?: string }>
   }
   Region?: (parent: Region) => [keyof typeof Region] // more on why typeof here: https://github.com/Microsoft/TypeScript/issues/14106
-  DeploymentState?: (parent: DeploymentState) => [keyof typeof DeploymentState]
+  ReadyState?: (parent: ReadyState) => [keyof typeof ReadyState]
   BuildOutput?: { [key in keyof BuildOutput]?: (parent: BuildOutput) => BuildOutput[key] }
   FileType?: (parent: FileType) => [keyof typeof FileType]
   BuiltLambdaInfo?: {
