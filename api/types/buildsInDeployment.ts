@@ -1,5 +1,5 @@
 import { IGraphQLToolsResolveInfo } from 'graphql-tools'
-import { DeploymentArgs } from './deployment'
+import { Deployment, DeploymentArgs } from './deployment'
 import { ZeitGqlContext } from './resolverTypes'
 import { DeploymentState, FileType, Region } from './sharedTypeDefs'
 
@@ -19,8 +19,8 @@ interface BuildOutput {
 
 export interface Build {
   id: string
-  deploymentId: string
   entrypoint: string
+  deploymentId: string
   use: string
   createdIn: Region
   scheduledAt?: string
@@ -37,14 +37,22 @@ export interface BuildsInDeploymentResolverType {
       args: DeploymentArgs,
       ctx: ZeitGqlContext,
       info: IGraphQLToolsResolveInfo
-    ) => Promise<Build[]>
+    ) => Promise<Array<Build & { teamId?: string }>>
   }
 
   // trivial resolvers and hence optional
-  Build?: { [key in keyof Build]?: (parent: Build) => Build[key] }
+  Build: { [key in keyof Build]?: (parent: Build) => Build[key] } & {
+    deployment: (
+      parent: Build & DeploymentArgs,
+      args: {},
+      ctx: ZeitGqlContext,
+      info: IGraphQLToolsResolveInfo
+    ) => Promise<Deployment & { teamId?: string }>
+  }
   Region?: (parent: Region) => [keyof typeof Region] // more on why typeof here: https://github.com/Microsoft/TypeScript/issues/14106
   DeploymentState?: (parent: DeploymentState) => [keyof typeof DeploymentState]
   BuildOutput?: { [key in keyof BuildOutput]?: (parent: BuildOutput) => BuildOutput[key] }
+  FileType?: (parent: FileType) => [keyof typeof FileType]
   BuiltLambdaInfo?: {
     [key in keyof BuiltLambdaInfo]?: (parent: BuiltLambdaInfo) => BuiltLambdaInfo[key]
   }

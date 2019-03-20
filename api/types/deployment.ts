@@ -60,6 +60,23 @@ export interface Deployment {
   lambdas?: Lambda[]
 }
 
+export type DeploymentTypeResolver = {
+  [key in keyof Deployment]?: (
+    parent: Deployment & {
+      teamId?: string
+    }
+  ) => Deployment[key]
+} & {
+  files: (
+    parent: Deployment & {
+      teamId?: string
+    },
+    args: {},
+    context: ZeitGqlContext,
+    info: IGraphQLToolsResolveInfo
+  ) => Promise<File[]>
+}
+
 export interface DeploymentResolverType {
   Query: {
     deployment: (
@@ -73,16 +90,7 @@ export interface DeploymentResolverType {
   // marking all trivial resolvers as optional so that things typecheck
   // this is because trivial resolvers are not defined in the resolver for Deployment type itself
   // as they are as simple as, for e.g., id: parent => parent.id
-  Deployment: {
-    [key in keyof Deployment]?: (parent: Deployment & { teamId?: string }) => Deployment[key]
-  } & {
-    files: (
-      parent: Deployment & { teamId?: string },
-      args: {},
-      context: ZeitGqlContext,
-      info: IGraphQLToolsResolveInfo
-    ) => Promise<File[]>
-  }
+  Deployment: DeploymentTypeResolver
 
   // For compatibility with IExecutableSchemaDefinition.resolvers which is the type of
   // the resolvers option passed to makeExecutableSchema

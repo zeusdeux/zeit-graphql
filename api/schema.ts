@@ -1,6 +1,6 @@
 import { GraphQLSchema } from 'graphql'
 import { mergeSchemas } from 'graphql-tools'
-import { BuildsInDeploymentSchame } from './rootFields/buildsInDeployment'
+import { BuildsInDeploymentSchema } from './rootFields/buildsInDeployment'
 import { DeploymentSchema } from './rootFields/deployment'
 import { DeploymentsSchema } from './rootFields/deployments'
 import { FileInDeploymentSchema } from './rootFields/fileInDeployment'
@@ -12,6 +12,7 @@ export const schema: GraphQLSchema = mergeSchemas({
     DeploymentSchema,
     FilesInDeploymentSchema,
     FileInDeploymentSchema,
-    BuildsInDeploymentSchame
-  ]
+    BuildsInDeploymentSchema
+  ],
+  onTypeConflict: l => l
 })
